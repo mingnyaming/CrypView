@@ -4,8 +4,11 @@ package notifier
         "github.com/pusher/pusher-http-go"
     )
     type Notifier struct {
+      // notifyChannelて言う chanタイプのオブゼット宣言 (boolタイプ専用)
+      // notifyがあるかどうかを確認するためのStruct.
         notifyChannel chan<- bool
     }
+                                        //←chan bool はboolタイプ専用の意味。
     func notifier(database *db.Database, notifyChannel <-chan bool) {
         client := pusher.Client{
             AppId:   "777982",
@@ -14,8 +17,11 @@ package notifier
             Cluster: "ap3",
             Secure:  true,
         }
-        for {
+        // 무한루프(無限ループ)
+        for
+          //notifyChannelの値段をもらう。
             <-notifyChannel
+            // Mapタイプのdata宣言 : key "results(string)": value "databaseて言うstructの値段(GetRecordsを通して)")
             data := map[string][]db.Record{"results": database.GetRecords()}
             client.Trigger("results", "results", data)
         }
