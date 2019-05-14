@@ -55,6 +55,14 @@
   version = "v0.0.7"
 
 [[projects]]
+  digest = "1:4a49346ca45376a2bba679ca0e83bec949d780d4e927931317904bad482943ec"
+  name = "github.com/mattn/go-sqlite3"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "c7c4067b79cc51e6dfdcef5c702e74b1e0fa7c75"
+  version = "v1.10.0"
+
+[[projects]]
   digest = "1:33422d238f147d247752996a26574ac48dcf472976eda7f5134015f06bf16563"
   name = "github.com/modern-go/concurrent"
   packages = ["."]
@@ -71,6 +79,14 @@
   version = "1.0.1"
 
 [[projects]]
+  digest = "1:9615019b0ef77e5b32c479843d113f04269bd34bfac992fe127c62962be879e3"
+  name = "github.com/pusher/pusher-http-go"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "412688bb3aba082ba848395e80f3acf7e735af7d"
+  version = "v1.3.0"
+
+[[projects]]
   digest = "1:d0072748c62defde1ad99dde77f6ffce492a0e5aea9204077e497c7edfb86653"
   name = "github.com/ugorji/go"
   packages = ["codec"]
@@ -80,9 +96,25 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:1292d43f91d32009a4afb7348ea3f84afd8be53c076d78c89f246781eb06e03f"
+  digest = "1:c7f568b721ad4e52db37c854a330be94b2aaa16968c5122a3d4fcc6d9c6f1843"
+  name = "golang.org/x/crypto"
+  packages = [
+    "internal/subtle",
+    "nacl/secretbox",
+    "poly1305",
+    "salsa20/salsa",
+  ]
+  pruneopts = "UT"
+  revision = "22d7a77e9e5f409e934ed268692e56707cd169e5"
+
+[[projects]]
+  branch = "master"
+  digest = "1:a1af50c6191b334be2bcda80004fec296b7fe7639ef195d8eef781eec1219fd4"
   name = "golang.org/x/sys"
-  packages = ["unix"]
+  packages = [
+    "cpu",
+    "unix",
+  ]
   pruneopts = "UT"
   revision = "ecd444e8653b66b20d764e53c22e3e615eea5fae"
 
@@ -108,6 +140,8 @@
   input-imports = [
     "github.com/gin-contrib/cors",
     "github.com/gin-gonic/gin",
+    "github.com/mattn/go-sqlite3",
+    "github.com/pusher/pusher-http-go",
   ]
   solver-name = "gps-cdcl"
   solver-version = 1

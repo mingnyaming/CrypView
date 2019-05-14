@@ -9,21 +9,24 @@ package webapp
     )
 
     //
-    func StartServer(database *db.Database, notifierClient *notifier.Notifier) {
+    func StartServer(database *db.CoinPriceDatabase, notifierClient *notifier.Notifier) {
         r := gin.Default()
         r.Use(cors.Default())
-
+        notifierClient.Notify()
+        
         r.GET("/results", func(c *gin.Context) {
-            results := database.GetRecords()
+            results := database.GetPrice()
             c.JSON(http.StatusOK, gin.H{
                 "results": results,
             })
         })
 
         r.POST("/results", func(c *gin.Context) {
-            var json db.Record
+            var json db.CoinPriceRecord
+
+            // errはここだけで（if中で）使用できる。
             if err := c.BindJSON(&json); err == nil {
-                database.AddRecord(json)
+                database.AddCoinData(json)
                 c.JSON(http.StatusCreated, json)
                 notifierClient.Notify()
             } else {
