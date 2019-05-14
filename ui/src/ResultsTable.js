@@ -16,20 +16,21 @@ import React from 'react';
                        <Label ribbon color={color}>{ index + 1 }</Label>
                    </Table.Cell>
                    <Table.Cell>{ result.name }</Table.Cell>
-                   <Table.Cell>{ result.time }</Table.Cell>
+                   <Table.Cell>{ result.price }</Table.Cell>
+                   <Table.Cell>{ result.primaryprice }</Table.Cell>
                </Table.Row>
            );
        }));
        return (
            <div className="ui container">
                <Segment>
-                   <Header>Results </Header>
+                   <Header>Coin Price </Header>
                    <Table striped>
                        <Table.Header>
                            <Table.Row>
-                               <Table.HeaderCell>Position</Table.HeaderCell>
-                               <Table.HeaderCell>Name</Table.HeaderCell>
-                               <Table.HeaderCell>Time</Table.HeaderCell>
+                               <Table.HeaderCell id="baka">Name</Table.HeaderCell>
+                               <Table.HeaderCell>Price</Table.HeaderCell>
+                               <Table.HeaderCell>Rate of Change</Table.HeaderCell>
                            </Table.Row>
                        </Table.Header>
                        <Table.Body>
@@ -38,5 +39,6 @@ import React from 'react';
                    </Table>
                </Segment>
            </div>
+
        );
    }
