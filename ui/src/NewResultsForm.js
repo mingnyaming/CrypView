@@ -1,10 +1,13 @@
 import React from "react";
 import { Form, Header, Segment, Button } from "semantic-ui-react";
+import "./style.css";
+
 export default class NewResultsForm extends React.Component {
   state = {
     name: "",
     price: "",
-    primaryprice: ""
+    primaryprice: "",
+    TransactionVolume: ""
   };
   onChangeName = this._onChangeName.bind(this);
   onChangeTime = this._onChangeTime.bind(this);
@@ -13,7 +16,7 @@ export default class NewResultsForm extends React.Component {
     return (
       <div className="ui container">
         <Segment vertical>
-          <Header>New Result</Header>
+          {/* <Header>New Result</Header>
           <Form onSubmit={this.onSubmit}>
             <Form.Field>
               <label>Name</label>
@@ -40,11 +43,11 @@ export default class NewResultsForm extends React.Component {
               />
             </Form.Field>
             <Button type="submit">Submit</Button>
-          </Form>
+          </Form> */}
         </Segment>
       </div>
     );
-  }
+  } // Rendering Textbar
   _onChangeName(e) {
     this.setState({
       name: e.target.value

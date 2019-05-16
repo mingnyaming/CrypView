@@ -1,0 +1,10 @@
+#nav_bar {
+}
+
+.item {
+  background: gray;
+}
+
+.ui.menu .item > img.logo {
+  margin-right: 15px;
+}

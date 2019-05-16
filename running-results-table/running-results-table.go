@@ -1,20 +1,16 @@
 package main
 
-   import (
-           "pusher/running-results-table/internal/db"
-           "pusher/running-results-table/internal/notifier"
-           "pusher/running-results-table/internal/webapp"
-           "fmt"
-   )
+import (
+	"pusher/running-results-table/internal/db"
+	"pusher/running-results-table/internal/notifier"
+	"pusher/running-results-table/internal/webapp"
+)
 
-   func main() {
-           //database := db.New()
-           database := db.NewCoinPriceDatabase()
-           db.DBInitailize()
-           
-           fmt.Println("Get Database Price============/")
-           fmt.Println(database.GetPrice())
-
-           notifierClient := notifier.New(&database)
-           webapp.StartServer(&database, &notifierClient)
-   }
+func main() {
+	//database := db.New()
+	database := db.NewCoinPriceDatabase()
+	db.DBInitailize()
+	notifierClient := notifier.New(&database)
+	notifierClient.Notify()
+	webapp.StartServer(&database, &notifierClient)
+}
