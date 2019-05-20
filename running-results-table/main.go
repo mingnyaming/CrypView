@@ -10,7 +10,7 @@ func main() {
 	//database := db.New()
 	db.Get_Coin_Price_From_bithumb()
 	database := db.NewCoinPriceDatabase()
-	//db.DBInitailize()
+	db.DBInitailize()
 	notifierClient := notifier.New(&database)
 	notifierClient.Notify()
 	webapp.StartServer(&database, &notifierClient)
