@@ -1,0 +1,20 @@
+#blue {
+  color: blue;
+}
+
+#red {
+  color: red;
+}
+
+#transaction_coinname {
+}
+
+#transaction_price {
+  width: "12rem";
+  text-align: "right";
+}
+
+#temp {
+  width: "3rem";
+  text-align: "left" !important;
+}

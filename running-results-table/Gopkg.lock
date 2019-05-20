@@ -2,12 +2,12 @@
 
 
 [[projects]]
-  digest = "1:2b59aca2665ff804f6606c8829eaee133ddd3aefbc841014660d961b0034f888"
+  digest = "1:cc93dd54278f6c0dd4b43588b3cf2c07b09b2a6dd4e2617edf81aa8946054c1e"
   name = "github.com/gin-contrib/cors"
   packages = ["."]
   pruneopts = "UT"
-  revision = "cf4846e6a636a76237a28d9286f163c132e841bc"
-  version = "v1.2"
+  revision = "5f50d4fb4e0306dcacc6f8e9bea2dcee784dbbdf"
+  version = "v1.3.0"
 
 [[projects]]
   branch = "master"
@@ -109,14 +109,14 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:a1af50c6191b334be2bcda80004fec296b7fe7639ef195d8eef781eec1219fd4"
+  digest = "1:dc6f8baa48474aa1652f038dbae44d4eb6b314f0579cbca3efc13558f48cf1d6"
   name = "golang.org/x/sys"
   packages = [
     "cpu",
     "unix",
   ]
   pruneopts = "UT"
-  revision = "ecd444e8653b66b20d764e53c22e3e615eea5fae"
+  revision = "61b9204099cb1bebc803c9ffb9b2d3acd9d457d9"
 
 [[projects]]
   digest = "1:cbc72c4c4886a918d6ab4b95e347ffe259846260f99ebdd8a198c2331cf2b2e9"
