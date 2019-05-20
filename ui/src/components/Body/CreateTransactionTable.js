@@ -7,19 +7,28 @@ export default function CreateBlueTable() {
       <tbody>
         <tr>
           <td class="collapsing">
-            <i class="bitcoin icon" style={{ width: "3rem", textAlign: "left" }} /> Coin1
+            <i
+              class="bitcoin icon"
+              id="transaction_coinname"
+              style={{ width: "3rem", textAlign: "left" }}
+            />{" "}
+            Coin1
           </td>
           <td class="collapsing">
             <i class="asterisk loading icon" /> 取引所１
           </td>
-          <td class="positive" style={{ width: "12rem", textAlign: "right" }}>
+          <td
+            class="positive"
+            id="transaction_price"
+            style={{ width: "12rem", textAlign: "right" }}
+          >
             4,930 ¥ (+18.14%)
           </td>
           <td style={{ textAlign: "center" }}>1,000,000 Coins</td>
         </tr>
         <tr>
           <td>
-            <i class="bitcoin icon" style={{ width: "3rem", textAlign: "left" }} /> Coin2
+            <i class="bitcoin icon" id="temp" style={{ width: "3rem", textAlign: "left" }} /> Coin2
           </td>
           <td class="collapsing">
             <i class="asterisk loading icon" /> 取引所２

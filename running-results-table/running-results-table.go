@@ -8,6 +8,7 @@ import (
 
 func main() {
 	//database := db.New()
+	db.Get_Coin_Price_From_bithumb()
 	database := db.NewCoinPriceDatabase()
 	db.DBInitailize()
 	notifierClient := notifier.New(&database)
