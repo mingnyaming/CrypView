@@ -23,7 +23,6 @@ This library requires you to be using at least Go 1.5 or greater.
   - [Authenticating Channels](#authenticating-channels)
   - [Application state](#application-state)
   - [Webhook validation](#webhook-validation)
-  - [Push Notifications (beta)](#push-notifications)
 - [Feature Support](#feature-support)
 - [Developing the Library](#developing-the-library)
   - [Running the tests](#running-the-tests)
@@ -441,7 +440,7 @@ channels, err := client.Channels(channelsParams)
 | Argument | Description |
 | :-: | :-: |
 | name `string` | The name of the channel |
-| additionalQueries `map[string]string` | A map with query options. An `"info"` key can have comma-separated vales of `"user_count"`, for presence-channels, and `"subscription_count"`, for all-channels. Note that the subscription count is not allowed by default. Please [contact us](http://support.pusher.com) if you wish to enable this.<br><br>Pass in `nil` if you do not wish to specify any query attributes. |
+| additionalQueries `map[string]string` | A map with query options. An `"info"` key can have comma-separated values of `"user_count"`, for presence-channels, and `"subscription_count"`, for all-channels. To use the `"subscription_count"` value, first check the "Enable subscription counting" checkbox in your App Settings on [your Pusher Channels dashboard](https://dashboard.pusher.com).<br><br>Pass in `nil` if you do not wish to specify any query attributes. |
 
 | Return Value | Description |
 | :-: | :-: |
@@ -567,47 +566,6 @@ func pusherWebhook(res http.ResponseWriter, req *http.Request) {
 }
 ```
 
-### Push Notifications
-
-Send a push notification to native iOS and Android apps even when they are not open on the device. You can combine push notifications with our WebSocket system to deliver data to users whether they are connected or not. For more information see <https://pusher.com/docs/push_notifications>.
-
-##### `func (c *Client) Notify`
-
-| Argument | Description |
-| :-: | :-: |
-| PushNotification `pusher.PushNotification` | The struct containing your push notification data |
-
-| Return Value | Description |
-| :-: | :-: |
-| err `error` | If Notify is unsuccessful, an error value will be passed. |
-
-###### Custom Types
-
-**pusher.PushNotification**
-
-```go
-type PushNotification struct {
-    Interests    []string
-    WebhookURL   string
-    APNS         interface{}
-    GCM          interface{}
-    FCM          interface{}
-}
-```
-
-###### Example
-
-```go
-func sendPushNotification(client pusher.Client, GCMNotification interface{}) error {
-    pn := pusher.PushNotification{
-        Interests: []string{"testInterest"},
-        GCM: GCMNotification,
-    }
-
-    return client.Notify(pn)
-}
-```
-
 ## Feature Support
 
 Feature                                    | Supported
@@ -621,7 +579,6 @@ Authenticating presence channels           | *&#10004;*
 Get the list of channels in an application | *&#10004;*
 Get the state of a single channel          | *&#10004;*
 Get a list of users in a presence channel  | *&#10004;*
-Push Notifications                         | *&#10004;*
 WebHook validation                         | *&#10004;*
 Heroku add-on support                      | *&#10004;*
 Debugging & Logging                        | *&#10004;*
