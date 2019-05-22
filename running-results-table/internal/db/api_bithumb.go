@@ -130,10 +130,11 @@ func xcoinApiCall(endpoint string, params string) (resp_data_str string) {
 // /public/ticker structure
 
 type ticker_rec struct {
-	Opening_price float64 `json:"opening_price,string"`
-	Closing_price float64 `json:"closing_price,string"`
-	Sell_price    float64 `json:"sell_price,string"`
-	Buy_price     float64 `json:"buy_price,string"`
+	Opening_price float32 `json:"opening_price,string"`
+	Closing_price float32 `json:"closing_price,string"`
+	Sell_price    float32 `json:"sell_price,string"`
+	Buy_price     float32 `json:"buy_price,string"`
+	Units_traded  float32 `json:"units_traded,string"`
 }
 
 // Ticker JSON structure
@@ -182,21 +183,33 @@ func Get_Coin_Price_From_bithumb() {
 
 	fmt.Println("Bithumb Public API URI('/public/ticker') Request...")
 
-	// GET Request ::
-	resp_data_str = xcoinApiCall("/public/ticker/ENJ", params)
-	fmt.Printf("%s\n", resp_data_str)
+	var CoinName [4]string
+	CoinName[0] = "BTC"
+	CoinName[1] = "ETH"
+	CoinName[2] = "XRP"
+	CoinName[3] = "BCH"
 
-	resp_data_bytes = []byte(resp_data_str)
+	for i := 0; i < len(CoinName); i++ {
+		// GET Request ::
+		resp_data_str = xcoinApiCall("/public/ticker/"+CoinName[i], params)
+		fmt.Printf("%s\n", resp_data_str)
 
-	json.Unmarshal(resp_data_bytes, &ticker_json_rec_info)
+		resp_data_bytes = []byte(resp_data_str)
 
-	fmt.Printf("- Status Code: %s\n", ticker_json_rec_info.Status)
-	fmt.Printf("- Opening Price: %.8f\n", ticker_json_rec_info.Data.Opening_price)
-	fmt.Printf("- Closing Price: %.8f\n", ticker_json_rec_info.Data.Closing_price)
-	fmt.Printf("- Sell Price: %.8f\n", ticker_json_rec_info.Data.Sell_price)
-	fmt.Printf("- Buy Price: %.8f\n", ticker_json_rec_info.Data.Buy_price)
-	fmt.Printf("\n\n")
+		json.Unmarshal(resp_data_bytes, &ticker_json_rec_info)
 
+		fmt.Printf("- Status Code: %s\n", ticker_json_rec_info.Status)
+		fmt.Printf("- Opening Price: %.8f\n", ticker_json_rec_info.Data.Opening_price)
+		fmt.Printf("- Closing Price: %.8f\n", ticker_json_rec_info.Data.Closing_price)
+		fmt.Printf("- Sell Price: %.8f\n", ticker_json_rec_info.Data.Sell_price)
+		fmt.Printf("- Buy Price: %.8f\n", ticker_json_rec_info.Data.Buy_price)
+		fmt.Printf("\n\n")
+
+		DBinsert(CoinName[i], ticker_json_rec_info.Data.Buy_price, ticker_json_rec_info.Data.Opening_price, ticker_json_rec_info.Data.Units_traded)
+
+	}
+
+	// 이름 / 현재가 / 시가 / 거래량
 	//
 	// private api
 	//

@@ -21,9 +21,7 @@ export default function ResultsTable({ results }) {
         <Table.Cell id={RateColor}>
           {((result.price / result.primaryprice - 1) * 100).toFixed(2) + "%"}
         </Table.Cell>
-        <Table.Cell>
-          <Label ribbon />
-        </Table.Cell>
+        <Table.Cell>{result.volume}</Table.Cell>
       </Table.Row>
     );
   }); // Select Ribbon Color
