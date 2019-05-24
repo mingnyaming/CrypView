@@ -26,11 +26,6 @@ func notifier(database *db.CoinPriceDatabase, notifyChannel <-chan bool) {
 	for {
 		//notifyChannelの値段をもらう。
 		<-notifyChannel
-		// Mapタイプのdata宣言 : key "results(string)": value "databaseて言うstructの値段(GetRecordsを通して)")
-
-		// fmt.Println("After Using GetPrice()")
-		// fmt.Println(db.GetPriceDataFromDB())
-
 		data := map[string][]db.CoinPriceRecord{"results": db.GetPriceDataFromDB()}
 		// fmt.Println("See Price data form notifier_for")
 		// fmt.Println(data)

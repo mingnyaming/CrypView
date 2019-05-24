@@ -41,3 +41,36 @@
 .ui container > div {
   margin-top: 70px;
 }
+
+/* .ui.striped.table > tbody > tr:first-child {
+  display: none;
+} */
+
+/* .ui.striped.table > tbody > tr:nth-child(1) {
+  display: none;
+} */
+
+/* #none {
+  display: none;
+}
+
+.BTC {
+  display: none;
+}
+
+.ETH {
+  display: none;
+} */
+.container > .ui.inverted.segment {
+  background-color: white;
+}
+
+.container > .ui.inverted.segment > .ui.inverted.button {
+  background-color: black;
+  color: white;
+}
+
+.container > .ui.inverted.segment > .ui.inverted.button:toggle {
+  background-color: black;
+  color: white;
+}

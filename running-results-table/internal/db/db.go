@@ -60,6 +60,8 @@ func GetPriceDataFromDB() []CoinPriceRecord {
 
 func NewCoinPriceDatabase() CoinPriceDatabase {
 	contents := make([]CoinPriceRecord, 0)
+	// fmt.Println("Contents : ", CoinPriceDatabase{contents})
+	// fmt.Println("Database Reset 中です。")
 	return CoinPriceDatabase{contents}
 }
 
@@ -80,10 +82,10 @@ func (database *CoinPriceDatabase) AddCoinData(r CoinPriceRecord) {
 
 func (database *CoinPriceDatabase) GetPrice() []CoinPriceRecord {
 
-	return ImportingDataFromDB.contents
+	return GetDataFromDB().contents
 }
 
-func DBinsert(coinname string, price float32, primaryprice float32, volume float32) {
+func DBupdate(coinname string, price float32, primaryprice float32, volume float32) {
 	database, _ := sql.Open("sqlite3", "./internal/db/Coin.db")
 	statement, _ := database.Prepare("UPDATE CoinPrice SET price=?, primaryprice=?, volume=? WHERE name=?")
 	statement.Exec(price, primaryprice, volume, coinname)
@@ -93,31 +95,11 @@ func DBinsert(coinname string, price float32, primaryprice float32, volume float
 // statement.Exec("24", "XtellaLumen")
 
 // DB 초기화 = 파라미터에 대해
-func DBInitailize() {
+func GetDataFromDB() CoinPriceDatabase {
 	// DBファイルあける
 
 	fmt.Println("Start DBInitialize")
 	database, _ := sql.Open("sqlite3", "./internal/db/Coin.db")
-
-	statement, _ := database.Prepare("CREATE TABLE IF NOT EXISTS CoinPrice (name TEXT PRIMARY KEY, price INTEGER, primaryprice INTEGER, volume INTEGER)")
-	statement.Exec()
-
-	// statement, _ = database.Prepare("UPDATE CoinPrice SET price=?, primaryprice=?, volume=? WHERE name=?")
-	// statement.Exec(28.4, 31.9, 200, "XRP")
-
-	// statement, _ = database.Prepare("UPDATE CoinPrice SET price=?, primaryprice=?, volume=? WHERE name=?")
-	// statement.Exec("31.8.", "35.2", "49232", "Ripple")
-
-	// fmt.Println("Input Database ======================")
-	// statement, _ = database.Prepare("INSERT INTO CoinPrice (name, price, primaryprice, volume) VALUES (?, ?, ?, ?)")
-	// statement.Exec("Bitcoin", "900000", "870000", "342")
-	// statement, _ = database.Prepare("INSERT INTO CoinPrice (name, price, primaryprice, volume) VALUES (?, ?, ?, ?)")
-	// statement.Exec("Etherium", "378000", "381000", "1142")
-	// statement, _ = database.Prepare("INSERT INTO CoinPrice (name, price, primaryprice, volume) VALUES (?, ?, ?, ?)")
-	// statement.Exec("Ripple", "37.9", "38.4", "134219")
-	// statement, _ = database.Prepare("INSERT INTO CoinPrice (name, price, primaryprice, volume) VALUES (?, ?, ?, ?)")
-	// statement.Exec("BitcoinCash", "473740", "481210", "108")
-	// fmt.Println("SUCCESS =============================")
 
 	rows, _ := database.Query("SELECT name, price, primaryprice, volume FROM CoinPrice")
 
@@ -127,12 +109,11 @@ func DBInitailize() {
 	var volume float32
 
 	//DBから持って来たCoinDataを一時貯蔵(Temporary save)する　オブゼクト
-	importingDataFromDB = NewCoinPriceDatabase()
 
+	var tempDataFromDB = NewCoinPriceDatabase()
 	//DBの内容を１Rowずつ持って来て保存する
 	for rows.Next() {
 		rows.Scan(&name, &price, &primaryprice, &volume)
-		//fmt.Println(name + ": " + strconv.Itoa(price) + " " + strconv.Itoa(primaryprice))
 
 		var inputdata CoinPriceRecord
 
@@ -141,14 +122,19 @@ func DBInitailize() {
 		inputdata.PrimaryPrice = primaryprice
 		inputdata.Volume = volume
 
-		ImportingDataFromDB.AddCoinData(inputdata)
-		fmt.Println(ImportingDataFromDB)
-
-		// fmt.Println("Appended Successfully@")
-		// fmt.Println(ImportingDataFromDB)
-		// fmt.Println(len(ImportingDataFromDB.contents))
-		// fmt.Println("")
-
+		tempDataFromDB.AddCoinData(inputdata)
 	}
-
+	return tempDataFromDB
 }
+
+// SQL Sample
+
+// statement, _ := database.Prepare("CREATE TABLE IF NOT EXISTS CoinPrice (name TEXT PRIMARY KEY, price INTEGER, primaryprice INTEGER, volume INTEGER)")
+// statement.Exec()
+// statement, _ = database.Prepare("UPDATE CoinPrice SET price=?, primaryprice=?, volume=? WHERE name=?")
+// statement.Exec("31.8.", "35.2", "49232", "Ripple")
+
+// fmt.Println("Input Database ======================")
+// statement, _ = database.Prepare("INSERT INTO CoinPrice (name, price, primaryprice, volume) VALUES (?, ?, ?, ?)")
+// statement.Exec("Bitcoin", "900000", "870000", "342")
+// fmt.Println("SUCCESS =============================")

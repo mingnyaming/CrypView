@@ -21,6 +21,9 @@ func StartServer(database *db.CoinPriceDatabase, notifierClient *notifier.Notifi
 		results := database.GetPrice()
 		fmt.Println("Print Results")
 		fmt.Println(results)
+		db.Get_Coin_Price_From_bithumb()
+		db.GetDataFromDB()
+
 		c.JSON(http.StatusOK, gin.H{
 			"results": results,
 		})

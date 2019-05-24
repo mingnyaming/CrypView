@@ -183,29 +183,31 @@ func Get_Coin_Price_From_bithumb() {
 
 	fmt.Println("Bithumb Public API URI('/public/ticker') Request...")
 
-	var CoinName [4]string
+	var CoinName [10]string
 	CoinName[0] = "BTC"
 	CoinName[1] = "ETH"
 	CoinName[2] = "XRP"
 	CoinName[3] = "BCH"
+	CoinName[4] = "LTC"
+	CoinName[5] = "EOS"
+	CoinName[6] = "XLM"
+	CoinName[7] = "ADA"
+	CoinName[8] = "TRX"
+	CoinName[9] = "BTG"
 
 	for i := 0; i < len(CoinName); i++ {
 		// GET Request ::
 		resp_data_str = xcoinApiCall("/public/ticker/"+CoinName[i], params)
-		fmt.Printf("%s\n", resp_data_str)
+		// fmt.Printf("%s\n", resp_data_str)
 
 		resp_data_bytes = []byte(resp_data_str)
 
 		json.Unmarshal(resp_data_bytes, &ticker_json_rec_info)
 
-		fmt.Printf("- Status Code: %s\n", ticker_json_rec_info.Status)
-		fmt.Printf("- Opening Price: %.8f\n", ticker_json_rec_info.Data.Opening_price)
-		fmt.Printf("- Closing Price: %.8f\n", ticker_json_rec_info.Data.Closing_price)
-		fmt.Printf("- Sell Price: %.8f\n", ticker_json_rec_info.Data.Sell_price)
-		fmt.Printf("- Buy Price: %.8f\n", ticker_json_rec_info.Data.Buy_price)
-		fmt.Printf("\n\n")
+		fmt.Printf("- Update Coin : ", CoinName[i])
+		fmt.Printf("\n")
 
-		DBinsert(CoinName[i], ticker_json_rec_info.Data.Buy_price, ticker_json_rec_info.Data.Opening_price, ticker_json_rec_info.Data.Units_traded)
+		DBupdate(CoinName[i], ticker_json_rec_info.Data.Buy_price, ticker_json_rec_info.Data.Opening_price, ticker_json_rec_info.Data.Units_traded)
 
 	}
 
