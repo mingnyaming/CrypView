@@ -103,6 +103,17 @@ func GetDataFromDB() CoinPriceDatabase {
 
 	rows, _ := database.Query("SELECT name, price, primaryprice, volume FROM CoinPrice")
 
+	statement, _ := database.Prepare("INSERT INTO CoinPrice (name, price, primaryprice, volume) VALUES (?, ?, ?, ?)")
+	statement.Exec("BSV", "0", "0", "0")
+	statement, _ = database.Prepare("INSERT INTO CoinPrice (name, price, primaryprice, volume) VALUES (?, ?, ?, ?)")
+	statement.Exec("ETC", "0", "0", "0")
+	statement, _ = database.Prepare("INSERT INTO CoinPrice (name, price, primaryprice, volume) VALUES (?, ?, ?, ?)")
+	statement.Exec("NPXS", "0", "0", "0")
+	statement, _ = database.Prepare("INSERT INTO CoinPrice (name, price, primaryprice, volume) VALUES (?, ?, ?, ?)")
+	statement.Exec("ENJ", "0", "0", "0")
+	statement, _ = database.Prepare("INSERT INTO CoinPrice (name, price, primaryprice, volume) VALUES (?, ?, ?, ?)")
+	statement.Exec("ELF", "0", "0", "0")
+
 	var name string
 	var price float32
 	var primaryprice float32

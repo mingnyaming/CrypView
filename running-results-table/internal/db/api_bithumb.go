@@ -183,7 +183,7 @@ func Get_Coin_Price_From_bithumb() {
 
 	fmt.Println("Bithumb Public API URI('/public/ticker') Request...")
 
-	var CoinName [10]string
+	var CoinName [15]string
 	CoinName[0] = "BTC"
 	CoinName[1] = "ETH"
 	CoinName[2] = "XRP"
@@ -194,6 +194,11 @@ func Get_Coin_Price_From_bithumb() {
 	CoinName[7] = "ADA"
 	CoinName[8] = "TRX"
 	CoinName[9] = "BTG"
+	CoinName[10] = "BSV"
+	CoinName[11] = "ETC"
+	CoinName[12] = "NPXS"
+	CoinName[13] = "ENJ"
+	CoinName[14] = "ELF"
 
 	for i := 0; i < len(CoinName); i++ {
 		// GET Request ::

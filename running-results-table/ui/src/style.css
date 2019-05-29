@@ -24,10 +24,12 @@
 
 #being_red {
   color: red;
+  background-color: #fff6f6;
 }
 
 #being_blue {
   color: blue;
+  background-color: #e5f0ff;
 }
 
 .ui .striped > table {
@@ -73,4 +75,43 @@
 .container > .ui.inverted.segment > .ui.inverted.button:toggle {
   background-color: black;
   color: white;
+}
+
+.ui.segment .ui.two.column.very.relaxed.grid .column > .MarketIndexName {
+  display: block;
+  font-size: 32px;
+  margin-top: 75px;
+}
+
+.ui.segment .ui.two.column.very.relaxed.grid .column > .MarketIndexData {
+  display: block;
+  font-size: 60px;
+  margin-top: 40px;
+  margin-right: 40px;
+}
+
+.ui.segment .ui.two.column.very.relaxed.grid .column > .MarketIndexRate {
+  display: block;
+  font-size: 15px;
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+
+.ui.segment .ui.two.column.very.relaxed.grid > .column {
+  text-align: center;
+  align-content: center;
+  text-decoration: none;
+}
+
+#MarketIndexData {
+}
+
+#Rise1 {
+  /* color: red; */
+}
+
+#center {
+  text-align: center;
+}
+.ui.avatar.image:hover {
 }

@@ -19,13 +19,21 @@ func StartServer(database *db.CoinPriceDatabase, notifierClient *notifier.Notifi
 
 	r.GET("/results", func(c *gin.Context) {
 		results := database.GetPrice()
-		fmt.Println("Print Results")
-		fmt.Println(results)
 		db.Get_Coin_Price_From_bithumb()
 		db.GetDataFromDB()
 
 		c.JSON(http.StatusOK, gin.H{
 			"results": results,
+		})
+	})
+
+	r.GET("/temp", func(c *gin.Context) {
+		temp := "Simple Text"
+		fmt.Println("Print Results")
+		fmt.Println(temp)
+
+		c.JSON(http.StatusOK, gin.H{
+			"temp": temp,
 		})
 	})
 
@@ -41,5 +49,6 @@ func StartServer(database *db.CoinPriceDatabase, notifierClient *notifier.Notifi
 			c.JSON(http.StatusBadRequest, gin.H{})
 		}
 	})
+
 	r.Run()
 }
