@@ -2,6 +2,7 @@ package main
 
 import (
 	"database/sql"
+
 	"pusher/running-results-table/internal/db"
 	"pusher/running-results-table/internal/notifier"
 	"pusher/running-results-table/internal/webapp"

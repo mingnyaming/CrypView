@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$/.." vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/pkg/dep/sources/https---github.com-gin--contrib-cors" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/pkg/dep/sources/https---github.com-gin--contrib-sse" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/pkg/dep/sources/https---github.com-gin--gonic-gin" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/pkg/dep/sources/https---github.com-golang-protobuf" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/pkg/dep/sources/https---github.com-json--iterator-go" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/pkg/dep/sources/https---github.com-mattn-go--isatty" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/pkg/dep/sources/https---github.com-mattn-go--sqlite3" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/pkg/dep/sources/https---github.com-modern--go-concurrent" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/pkg/dep/sources/https---github.com-modern--go-reflect2" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/pkg/dep/sources/https---github.com-pusher-pusher--http--go" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/pkg/dep/sources/https---github.com-ugorji-go" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/pkg/dep/sources/https---go.googlesource.com-crypto" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/pkg/dep/sources/https---go.googlesource.com-sys" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/pkg/dep/sources/https---gopkg.in-go--playground-validator.v8" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/pkg/dep/sources/https---gopkg.in-yaml.v2" vcs="Git" />
+  </component>
+</project>

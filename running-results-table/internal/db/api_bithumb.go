@@ -215,31 +215,4 @@ func Get_Coin_Price_From_bithumb() {
 		DBupdate(CoinName[i], ticker_json_rec_info.Data.Buy_price, ticker_json_rec_info.Data.Opening_price, ticker_json_rec_info.Data.Units_traded)
 
 	}
-
-	// 이름 / 현재가 / 시가 / 거래량
-	//
-	// private api
-	//
-	// endpoint => parameters
-	// /info/current
-	// /info/account
-	// /info/balance
-	// /info/wallet_address
-
-	/* fmt.Println("Bithumb Private API URI('/info/account') Request...");
-
-	resp_data_str = xcoinApiCall("/info/account", params);
-	fmt.Printf("%s\n", resp_data_str);
-
-	resp_data_bytes = []byte(resp_data_str);
-
-	json.Unmarshal(resp_data_bytes, &account_json_rec_info);
-
-	fmt.Printf("- Status Code: %s\n", account_json_rec_info.Status);
-	fmt.Printf("- Created: %d\n", account_json_rec_info.Data.Created);
-	fmt.Printf("- Account ID: %s\n", account_json_rec_info.Data.Account_id);
-	fmt.Printf("- Trade Fee: %.4f\n", account_json_rec_info.Data.Trade_fee);
-	fmt.Printf("- Balance: %.8f\n", account_json_rec_info.Data.Balance); */
-
-	//os.Exit(0)
 }
